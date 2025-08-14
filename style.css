@@ -209,17 +209,15 @@ p {
 
 /* Radio button styles */
 .type-group input[type="radio"] {
-  accent-color: gray; /* fallback default */
+  accent-color: gray; 
   transform: scale(1.2);
   cursor: pointer;
 }
 
-/* Income radio = Blue */
 .type-group input[value="income"] {
   accent-color: #6b8e23;
 }
 
-/* Expense radio = Red */
 .type-group input[value="expense"] {
   accent-color: #dc3545;
 }
@@ -236,6 +234,8 @@ p {
 .type-date-row input[type="date"] {
   padding: 6px 12px;
   border: 1px solid #778da9;
+  font-size: 14px;
+  min-width: 200px;
   border-radius: 25px;
   background: #415a77;
   color: #fff;
