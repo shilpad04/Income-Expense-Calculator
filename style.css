@@ -192,8 +192,13 @@ p {
   font-weight: normal;
 }
 
-.type-group input[type="radio"] {
-  accent-color: #6b8e23;
+.type-group input[type="radio"][value="income"] {
+  accent-color: #1806da; 
+  cursor: pointer;
+}
+
+.type-group input[type="radio"][value="expense"] {
+  accent-color: #a4161a; 
   cursor: pointer;
 }
 
@@ -271,9 +276,16 @@ p {
   cursor: pointer;
 }
 
-.filters input[type="radio"] {
-  accent-color: #6b8e23;
-  cursor: pointer;
+.filters input[type="radio"][value="expense"] {
+  accent-color: #a4161a; 
+}
+
+.filters input[type="radio"][value="income"] {
+  accent-color: #6b8e23; 
+}
+
+.filters input[type="radio"][value="all"] {
+  accent-color: #1806da;
 }
 
 .filters label:hover {
