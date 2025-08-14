@@ -44,17 +44,9 @@ function showTotals() {
 
 // Show list
 function showList() {
-    var listToShow = [];
-
-    if (currentFilter === "all") {
-        listToShow = entries;
-    } else {
-        for (var i = 0; i < entries.length; i++) {
-            if (entries[i].type === currentFilter) {
-                listToShow.push(entries[i]);
-            }
-        }
-    }
+    var listToShow = currentFilter === "all" 
+        ? entries 
+        : entries.filter(e => e.type === currentFilter);
 
     // If no entries
     if (listToShow.length === 0) {
@@ -65,34 +57,67 @@ function showList() {
     }
 
     noEntriesMsg.style.display = "none"; 
-
     entriesDiv.innerHTML = "";
-    for (var i = 0; i < listToShow.length; i++) {
-        var entry = listToShow[i];
-        var badgeText = entry.type === "income" ? "Income" : "Expense"; 
 
-        var itemHTML =
-            '<div class="item">' +
-                '<div>' +
-                    '<div class="desc">' + entry.description + '</div>' +
-                    '<div class="badge ' + entry.type + '">' + badgeText + '</div>' +
-                '</div>' +
-                '<div class="date-amount">' + 
-                    '<span class="date">' + (entry.date || "No date") + '</span>' + 
-                    ' | ' +
-                    '<span class="amount">Rs ' + entry.amount.toFixed(2) + '</span>' +
-                '</div>' +
-                '<div class="actions">' +
-                    '<button class="edit" onclick="editEntry(\'' + entry.id + '\')">Edit</button>' +
-                    '<button class="delete" onclick="deleteEntry(\'' + entry.id + '\')">Delete</button>' +
-                '</div>' +
-            '</div>';
+    listToShow.forEach(entry => {
+        var itemDiv = document.createElement("div");
+        itemDiv.className = "item";
 
-        entriesDiv.innerHTML += itemHTML;
-    }
+        // Left section (desc + badge)
+        var leftDiv = document.createElement("div");
+
+        var descDiv = document.createElement("div");
+        descDiv.className = "desc";
+        descDiv.textContent = entry.description;
+
+        var badgeDiv = document.createElement("div");
+        badgeDiv.className = "badge " + entry.type;
+        badgeDiv.textContent = entry.type === "income" ? "Income" : "Expense";
+
+        leftDiv.appendChild(descDiv);
+        leftDiv.appendChild(badgeDiv);
+
+        // Middle section (date + amount)
+        var dateAmountDiv = document.createElement("div");
+        dateAmountDiv.className = "date-amount"; 
+
+        var dateSpan = document.createElement("span");
+        dateSpan.className = "date";
+        dateSpan.textContent = entry.date || "No date";
+
+        var amountSpan = document.createElement("span");
+        amountSpan.className = "amount";
+        amountSpan.textContent = "Rs " + entry.amount.toFixed(2);
+
+        dateAmountDiv.appendChild(dateSpan);
+        dateAmountDiv.appendChild(amountSpan);
+
+        // Actions
+        var actionsDiv = document.createElement("div");
+        actionsDiv.className = "actions";
+
+        var editBtn = document.createElement("button");
+        editBtn.className = "edit";
+        editBtn.textContent = "Edit";
+        editBtn.onclick = () => editEntry(entry.id);
+
+        var deleteBtn = document.createElement("button");
+        deleteBtn.className = "delete";
+        deleteBtn.textContent = "Delete";
+        deleteBtn.onclick = () => deleteEntry(entry.id);
+
+        actionsDiv.appendChild(editBtn);
+        actionsDiv.appendChild(deleteBtn);
+
+        itemDiv.appendChild(leftDiv);
+        itemDiv.appendChild(dateAmountDiv);
+        itemDiv.appendChild(actionsDiv);
+
+        entriesDiv.appendChild(itemDiv);
+    });
 }
 
-// Add or update entry
+// Add  entry
 function addEntry(e) {
     e.preventDefault();
 
@@ -114,14 +139,14 @@ function addEntry(e) {
     }
 
     if (editIdInput.value) {
-        for (var i = 0; i < entries.length; i++) {
-            if (entries[i].id === editIdInput.value) {
-                entries[i].type = type;
-                entries[i].description = description;
-                entries[i].amount = amount;
-                entries[i].date = date; 
+        entries.forEach(e => {
+            if (e.id === editIdInput.value) {
+                e.type = type;
+                e.description = description;
+                e.amount = amount;
+                e.date = date;
             }
-        }
+        });
         editIdInput.value = "";
         submitBtn.textContent = "Add Entry";
     } else {
@@ -143,34 +168,22 @@ function addEntry(e) {
 
 // Edit entry
 function editEntry(id) {
-    for (var i = 0; i < entries.length; i++) {
-        if (entries[i].id === id) {
-            var entry = entries[i];
-            var typeInputs = document.getElementsByName("type");
-            for (var j = 0; j < typeInputs.length; j++) {
-                if (typeInputs[j].value === entry.type) {
-                    typeInputs[j].checked = true;
-                }
-            }
+    entries.forEach(entry => {
+        if (entry.id === id) {
+            document.querySelector(`input[name="type"][value="${entry.type}"]`).checked = true;
             descInput.value = entry.description;
             amountInput.value = entry.amount;
             dateInput.value = entry.date || "";
             editIdInput.value = entry.id;
             submitBtn.textContent = "Update Entry";
         }
-    }
+    });
 }
 
 // Delete entry 
 function deleteEntry(id) {
     if (confirm("Delete this entry?")) {
-        var newList = [];
-        for (var i = 0; i < entries.length; i++) {
-            if (entries[i].id !== id) {
-                newList.push(entries[i]);
-            }
-        }
-        entries = newList;
+        entries = entries.filter(e => e.id !== id);
         saveData();
         showTotals();
         showList();
@@ -178,12 +191,12 @@ function deleteEntry(id) {
 }
 
 // Filter change
-for (var i = 0; i < filterRadios.length; i++) {
-    filterRadios[i].addEventListener("change", function(e) {
+filterRadios.forEach(radio => {
+    radio.addEventListener("change", e => {
         currentFilter = e.target.value;
         showList();
     });
-}
+});
 
 // Reset form 
 resetBtn.addEventListener("click", function() {

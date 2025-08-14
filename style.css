@@ -363,13 +363,15 @@ p {
 .date-amount {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 .date-amount .date {
   color: #fff;
   font-size: 13px;
   font-weight: bold;
+  font-size: 15px;
+  gap:10px;
 }
 
 .date-amount .amount {
@@ -434,119 +436,144 @@ p {
 
 /* RWD */
 @media (max-width: 768px) {
-  body {
-    font-size: 14px;
+  .item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px;
+    margin: 6px 0;
+    width: 100%;
   }
-  h1 {
+
+    h1 {
     font-size: 28px;
   }
-  .totals {
-    flex-direction: column;
-    gap: 8px;
-    padding: 8px;
-  }
-  .totals div {
-    font-size: 13px;
-    padding: 8px;
-  }
-  .totals div span {
-    font-size: 14px;
-  }
-  .entry-form,
-  .filters,
-  #added-entries {
-    padding: 8px;
-  }
-  .entries label {
-    font-size: 14px;
-  }
-  .entries h3 {
+
+  p {
     font-size: 18px;
   }
 
+  .desc {
+    font-size: 14px;
+  }
+
+  .badge {
+    font-size: 0.7rem;
+  }
+
+  .date, .amount {
+    font-size: 13px;
+  }
+
+  .type-group,
+  .date-group {
+    font-size: 16px;
+  }
+
   .type-date-row {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: column; 
+    align-items: flex-start; 
     gap: 10px;
   }
 
-  .type-date-row label[for="entry-date"] {
+   .date-group {
     margin-left: 0;
+    width: 100%;
+    justify-content: flex-start;
   }
 
-  .filters legend {
-    font-size: 16px;
+  .desc {
+    margin-bottom: 6px;
+    font-size: 15px;
   }
-  .filters label {
-    font-size: 14px;
-  }
-  .item {
-    font-size: 14px;
-    padding: 8px;
-  }
+
   .badge {
-    font-size: 0.7rem;
-    padding: 2px 5px;
+    font-size: 0.75rem;
+    margin-bottom: 8px;
+    padding: 4px 8px;
   }
+
+  .date-amount {
+    flex-direction: column; 
+    align-items: flex-start;
+    gap: 4px;
+    width: 100%;
+  }
+
+  .date, .amount {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .actions {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 6px;
+  }
+
   .actions button {
-    font-size: 0.7rem;
-    padding: 3px 6px;
+    flex: 1;
+    padding: 6px 0;
+    font-size: 13px;
   }
 }
-
+/* mobiles (≤480px) */
 @media (max-width: 480px) {
-  body {
-    font-size: 12px;
-  }
-  h1 {
-    font-size: 22px;
-  }
-  p {
-    font-size: 12px;
-  }
-  .totals {
-    gap: 6px;
+  .item {
     padding: 6px;
-  }
-  .totals div {
-    font-size: 12px;
-    padding: 6px;
-  }
-  .totals div span {
-    font-size: 12px;
-  }
-  .entries label {
-    font-size: 12px;
-  }
-  .entries h3 {
-    font-size: 16px;
+    border-radius: 15px;
   }
 
-  .type-date-row {
-    flex-direction: column;
-    align-items: flex-start;
+    .type-date-row {
     gap: 8px;
   }
 
-  .type-date-row label[for="entry-date"] {
-    margin-left: 0;
+  .date-group {
+    font-size: 16px;
   }
-  .filters legend {
+
+
+  .desc {
     font-size: 14px;
   }
-  .filters label {
-    font-size: 12px;
-  }
-  .item {
-    font-size: 12px;
-    padding: 6px;
-  }
+
   .badge {
-    font-size: 0.6rem;
-    padding: 2px 4px;
+    font-size: 0.7rem;
+    padding: 3px 6px;
   }
+
+  .date, .amount {
+    font-size: 13px;
+  }
+
   .actions button {
-    font-size: 0.6rem;
-    padding: 2px 5px;
+    font-size: 12px;
+    padding: 5px 0;
+  }
+
+   h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .desc {
+    font-size: 13px;
+  }
+
+  .badge {
+    font-size: 0.65rem;
+  }
+
+  .date, .amount {
+    font-size: 12px;
+  }
+
+  .type-group,
+  .date-group {
+    font-size: 14px;
   }
 }
