@@ -6,6 +6,7 @@ var netBalance = document.getElementById("net-balance");
 var form = document.querySelector(".entry-form");
 var descInput = document.getElementById("description");
 var amountInput = document.getElementById("amount");
+var dateInput = document.getElementById("entry-date"); 
 var editIdInput = document.getElementById("edit-id");
 
 var entriesDiv = document.getElementById("added-entries");
@@ -68,7 +69,7 @@ function showList() {
     entriesDiv.innerHTML = "";
     for (var i = 0; i < listToShow.length; i++) {
         var entry = listToShow[i];
-        var badgeText = entry.type === "income" ? "Income" : "Expanse";
+        var badgeText = entry.type === "income" ? "Income" : "Expense"; 
 
         var itemHTML =
             '<div class="item">' +
@@ -76,7 +77,11 @@ function showList() {
                     '<div class="desc">' + entry.description + '</div>' +
                     '<div class="badge ' + entry.type + '">' + badgeText + '</div>' +
                 '</div>' +
-                '<div>Rs ' + entry.amount.toFixed(2) + '</div>' +
+                '<div class="date-amount">' + 
+                    '<span class="date">' + (entry.date || "No date") + '</span>' + 
+                    ' | ' +
+                    '<span class="amount">Rs ' + entry.amount.toFixed(2) + '</span>' +
+                '</div>' +
                 '<div class="actions">' +
                     '<button class="edit" onclick="editEntry(\'' + entry.id + '\')">Edit</button>' +
                     '<button class="delete" onclick="deleteEntry(\'' + entry.id + '\')">Delete</button>' +
@@ -101,8 +106,9 @@ function addEntry(e) {
 
     var description = descInput.value.trim();
     var amount = parseFloat(amountInput.value);
+    var date = dateInput.value; 
 
-    if (!type || description === "" || isNaN(amount) || amount <= 0) {
+    if (!type || description === "" || isNaN(amount) || amount <= 0 || date === "") { 
         alert("Please enter valid data.");
         return;
     }
@@ -113,6 +119,7 @@ function addEntry(e) {
                 entries[i].type = type;
                 entries[i].description = description;
                 entries[i].amount = amount;
+                entries[i].date = date; 
             }
         }
         editIdInput.value = "";
@@ -122,7 +129,8 @@ function addEntry(e) {
             id: Date.now().toString(),
             type: type,
             description: description,
-            amount: amount
+            amount: amount,
+            date: date 
         };
         entries.push(newEntry);
     }
@@ -146,6 +154,7 @@ function editEntry(id) {
             }
             descInput.value = entry.description;
             amountInput.value = entry.amount;
+            dateInput.value = entry.date || "";
             editIdInput.value = entry.id;
             submitBtn.textContent = "Update Entry";
         }
@@ -186,10 +195,8 @@ resetBtn.addEventListener("click", function() {
 // Submit form
 form.addEventListener("submit", addEntry);
 
-// Start
 showTotals();
 showList();
-
 
 window.editEntry = editEntry;
 window.deleteEntry = deleteEntry;
