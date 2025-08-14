@@ -5,27 +5,34 @@
 }
 
 body {
-  background: linear-gradient(135deg,#002244,#001a33,#001122,#000a14,#0d0d0d);
+  background: linear-gradient(
+    135deg,
+    #002244,
+    #001a33,
+    #001122,
+    #000a14,
+    #0d0d0d
+  );
   color: #e0e1dd;
   padding: 20px;
   line-height: 1.5;
-  font-family: 'Open Sans', sans-serif; 
+  font-family: "Open Sans", sans-serif;
 }
 
 h1 {
   text-align: center;
   margin-bottom: 10px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 35px;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(20, 20, 20, 0.4);
   color: #e0e1dd;
 }
 
-p{
+p {
   text-align: center;
   margin-bottom: 12px;
- font-style: italic;
+  font-style: italic;
   font-size: 20px;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(20, 20, 20, 0.4);
@@ -43,7 +50,7 @@ p{
 }
 
 .totals .total-income {
-  background: #6b8e23;
+  background: #1f64ee;
   box-shadow: 0 2px 4px rgba(14, 20, 0, 0.4);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -55,7 +62,7 @@ p{
 }
 
 .totals .net-balance {
-  background: #415a77;
+  background: #6b8e23;
   box-shadow: 0 2px 4px rgba(14, 20, 0, 0.4);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -90,7 +97,7 @@ p{
 /* Form */
 .entry-form {
   padding: 15px;
-  background:rgba(18, 28, 45, 0.925);
+  background: rgba(18, 28, 45, 0.925);
   border: 1px solid #415a77;
   border-radius: 25px;
   max-width: 1200px;
@@ -275,7 +282,7 @@ p{
 
 /* Entries list */
 #added-entries {
- background: rgba(22, 14, 42, 0.729);
+  background: rgba(22, 14, 42, 0.729);
   border: 1px solid #415a77;
   border-radius: 25px;
   padding: 12px;
@@ -338,7 +345,7 @@ p{
 
 .actions .edit {
   background: #f4a261;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin-right: 5px;
   color: #000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
@@ -346,7 +353,7 @@ p{
 
 .actions .delete {
   background: #e63946;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
 }
@@ -408,7 +415,7 @@ p{
   h1 {
     font-size: 22px;
   }
-  p{
+  p {
     font-size: 12px;
   }
   .totals {
