@@ -209,7 +209,7 @@ p {
 
 /* Radio button styles */
 .type-group input[type="radio"] {
-  accent-color: gray; 
+  accent-color: gray;
   transform: scale(1.2);
   cursor: pointer;
 }
@@ -232,9 +232,9 @@ p {
 }
 
 .type-date-row input[type="date"] {
-  padding: 6px 12px;
+  padding: 8px 16px;
   border: 1px solid #778da9;
-  font-size: 14px;
+  font-size: 16px;
   min-width: 200px;
   border-radius: 25px;
   background: #415a77;
@@ -371,7 +371,7 @@ p {
   font-size: 13px;
   font-weight: bold;
   font-size: 15px;
-  gap:10px;
+  gap: 10px;
 }
 
 .date-amount .amount {
@@ -387,6 +387,7 @@ p {
 
 .desc {
   font-weight: bold;
+  font-size: 20px;
 }
 
 .badge {
@@ -398,7 +399,8 @@ p {
   font-size: 14px;
   font-weight: bold;
   text-align: center;
-  min-width: 70px;
+  min-width: 50px;
+  margin: 0;
 }
 
 .badge.income {
@@ -444,7 +446,7 @@ p {
     width: 100%;
   }
 
-    h1 {
+  h1 {
     font-size: 28px;
   }
 
@@ -460,7 +462,8 @@ p {
     font-size: 0.7rem;
   }
 
-  .date, .amount {
+  .date,
+  .amount {
     font-size: 13px;
   }
 
@@ -470,12 +473,12 @@ p {
   }
 
   .type-date-row {
-    flex-direction: column; 
-    align-items: flex-start; 
+    flex-direction: column;
+    align-items: flex-start;
     gap: 10px;
   }
 
-   .date-group {
+  .date-group {
     margin-left: 0;
     width: 100%;
     justify-content: flex-start;
@@ -483,7 +486,7 @@ p {
 
   .desc {
     margin-bottom: 6px;
-    font-size: 15px;
+    font-size: 30px;
   }
 
   .badge {
@@ -493,13 +496,14 @@ p {
   }
 
   .date-amount {
-    flex-direction: column; 
+    flex-direction: column;
     align-items: flex-start;
     gap: 4px;
     width: 100%;
   }
 
-  .date, .amount {
+  .date,
+  .amount {
     font-size: 14px;
     width: 100%;
   }
@@ -517,6 +521,12 @@ p {
     padding: 6px 0;
     font-size: 13px;
   }
+
+  .type-date-row .date-group input[type="date"] {
+    min-width: 150px; 
+    padding: 6px 12px;
+    font-size: 14px;
+  }
 }
 /* mobiles (≤480px) */
 @media (max-width: 480px) {
@@ -525,14 +535,13 @@ p {
     border-radius: 15px;
   }
 
-    .type-date-row {
+  .type-date-row {
     gap: 8px;
   }
 
   .date-group {
     font-size: 16px;
   }
-
 
   .desc {
     font-size: 14px;
@@ -543,7 +552,8 @@ p {
     padding: 3px 6px;
   }
 
-  .date, .amount {
+  .date,
+  .amount {
     font-size: 13px;
   }
 
@@ -552,7 +562,7 @@ p {
     padding: 5px 0;
   }
 
-   h1 {
+  h1 {
     font-size: 24px;
   }
 
@@ -568,12 +578,19 @@ p {
     font-size: 0.65rem;
   }
 
-  .date, .amount {
+  .date,
+  .amount {
     font-size: 12px;
   }
 
   .type-group,
   .date-group {
     font-size: 14px;
+  }
+
+  .type-date-row .date-group input[type="date"] {
+    min-width: 120px;  
+    padding: 5px 10px;
+    font-size: 13px;
   }
 }

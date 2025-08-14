@@ -63,7 +63,6 @@ function showList() {
         var itemDiv = document.createElement("div");
         itemDiv.className = "item";
 
-        // Left section (desc + badge)
         var leftDiv = document.createElement("div");
 
         var descDiv = document.createElement("div");
